@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+
+    <body>
+
+        {% if reservations %}
+            <ul>
+                {% for reservation in reservations %}
+                <li>{{ reservation.contact_first_name }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no reservations present.</strong>
+        {% endif %}
+
+    </body>
+</html>

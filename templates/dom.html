@@ -109,7 +109,44 @@
 <body>
 <form id="f1" action="/ajax" method="post" onsubmit="return captureSubmit()">
     {% csrf_token %}
-    <input name="name">
+    <label for="contact_first_name">First Name</label>
+    <input name="contact_first_name">
+    <br>
+    <label for="contact_last_name">Last Name</label>
+    <input name="contact_last_name">
+    <br>
+    <label for="contact_email_address">Email Address</label>
+    <input name="contact_email_address">
+     <br>
+    <label for="contact_phone_number">Phone Number</label>
+    <input name="contact_phone_number">
+     <br>
+    <label for="check_in_date">Check In</label>
+    <input name="check_in_date" type="date" placeholder="1999-31-01">
+     <br>
+    <label for="check_out_date">Check Out</label>
+    <input name="check_out_date">
+     <br>
+    <label for="number_of_nights">Number of Nights</label>
+
+     <br>
+    <label for="number_of_adults">Number of Adults</label>
+    <input name="number_of_adults">
+     <br>
+    <label for="number_of_children">Number of Children</label>
+    <input name="number_of_children">
+     <br>
+    <label for="message_to_hosts">Message to Hosts</label>
+    <input name="message_to_hosts">
+     <br>
+    <label for="calculated_rate">Calculated Rate</label>
+     <br>
+    <label for="cleaning_fee">Cleaning Fee</label>
+     <br>
+    <label for="tax">Tax</label>
+     <br>
+    <label for="payment_total">Payment Total</label>
+     <br>
     <input type="submit" value="submit">
     </form>
 <ul id="list">

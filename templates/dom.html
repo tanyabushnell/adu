@@ -10,8 +10,32 @@
   <script>
 
   $(function() {
-    $( "#check_in_date, #check_out_date" ).datepicker();
+    $( "#check_in_date, #check_out_date" ).datepicker({
+         onClose:function(dateText, inst) {
+             alert("Date picker closed");
+            if($("#check_in_date").val()=='' || $("#check_out_date").val()=='') return;
+
+            var nights = ($("#check_out_date").datepicker("getDate") - $("#check_in_date").datepicker("getDate")) / 1000 / 60 / 60 / 24; // days
+             alert(nights);
+            $("#number_of_nights").val(nights);
+             //check if the check in date exists - values in both fields
+
+             //check to see if check out date exist
+
+             //if they both exist get the number of nights between these two dates
+
+             //stick that value (number of nights) in the number of nights field
+
+         }
+    });
+
+      $("#number_of_adults").focusout(function() {
+
+        alert("focus out of number_of_adults");
+      });
+
   });
+
 
   </script>
 </head>
@@ -20,6 +44,7 @@
     <title></title>
     <script>
         var request = new XMLHttpRequest();
+
 
 
         function simple_draw(data) {
@@ -111,8 +136,17 @@
             }
             saveData(formDataList.join("&"));
             //CANCEL FORM SUBMISSION; must be returned in onsubmit below.
+
+
+            //Calculate Number of nights with Check in and check out date
+
+            //Calculate Rate
+
+            //Calculate Fee
             return false;
         }
+
+
 
     </script>
     <style>
@@ -142,6 +176,7 @@
     Check Out: <input type="text" id="check_out_date">
     <type="date" id="check_out_date"><br>
     <label for="number_of_nights">Number of Nights</label>
+    <input name="number_of_nights" disabled>
      <br>
     <label for="number_of_adults">Number of Adults</label>
     <input name="number_of_adults">
@@ -153,6 +188,7 @@
     <input name="message_to_hosts">
      <br>
     <label for="calculated_rate">Calculated Rate</label>
+     <input name="calculated_rate">
      <br>
     <label for="cleaning_fee">Cleaning Fee</label>
      <br>

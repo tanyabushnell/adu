@@ -2,14 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+
   <title>jQuery UI Datepicker - Default functionality</title>
+
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
+
   <script>
 
+
+
+
   $(function() {
+
+
     $( "#check_in_date, #check_out_date" ).datepicker({
          onClose:function(dateText, inst) {
 
@@ -171,10 +179,10 @@
     <input name="contact_phone_number">
     <br>
     Check In: <input type="text" id="check_in_date">
-    <type="date" id="check_in_date">
+    <type="date" id="check_in_date"><img src="/static/calendar.gif"/>
     <br>
     Check Out: <input type="text" id="check_out_date">
-    <type="date" id="check_out_date"><br>
+    <type="date" id="check_out_date"><img src="/static/calendar.gif"/><br>
     <label for="number_of_nights">Number of Nights</label>
     <input name="number_of_nights" disabled id="number_of_nights">
      <br>

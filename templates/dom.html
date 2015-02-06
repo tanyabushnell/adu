@@ -26,6 +26,7 @@
             var nights = ($("#check_out_date").datepicker("getDate") - $("#check_in_date").datepicker("getDate")) / 1000 / 60 / 60 / 24; // days
 
             $("#number_of_nights").val(nights);
+             updateTotal()
              //check if the check in date exists - values in both fields
 
              //check to see if check out date exist
@@ -46,7 +47,7 @@
 
 
   </script>
-</head>
+
 
     <meta charset="UTF-8">
     <title></title>
@@ -96,7 +97,7 @@
                 }
                 output.push(text)
             });
-            list.innerHTML = "<li>" + output.join("</li><li>") + "</li>";
+{#            list.innerHTML = "<li>" + output.join("</li><li>") + "</li>";#}
         }
 
         function onRequestChange() {
@@ -119,7 +120,7 @@
         function load() {
             fetch();
         }
-        window.addEventListener("load", load);
+{#        window.addEventListener("load", load);#}
 
         function saveData(formData){
             request.open("POST","/ajax",true);
@@ -166,6 +167,7 @@
 <body>
 <form id="f1" action="/ajax" method="post" onsubmit="return captureSubmit()">
     {% csrf_token %}
+    <input type="hidden" value="100" name="price" id="price">
     <label for="contact_first_name">First Name</label>
     <input name="contact_first_name">
     <br>
@@ -196,7 +198,7 @@
     <input name="message_to_hosts">
      <br>
     <label for="calculated_rate">Calculated Rate</label>
-     <input name="calculated_rate" disabled id="cleaning_fee">
+     <input name="calculated_rate" disabled id="calculated_rate">
      <br>
     <label for="cleaning_fee">Cleaning Fee</label>
     <input name="cleaning_fee" disabled id="cleaning_fee">
@@ -209,20 +211,34 @@
      <br>
     <input type="submit" value="submit">
     </form>
-<ul id="list">
+
 </ul>
 <ul class="template">
     <li id="template" class="template">
-        <span>
-           Name: {phone.first_name}
-        </span>
-        <br>
-        <span>
-           Number: {phone.number}
+
         </span>
         <br>
         <br>
     </li>
 </ul>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        quantityElement = document.getElementById("number_of_nights");
+        priceElement = document.getElementById("price");
+        totalElement = document.getElementById("calculated_rate");
+
+        function updateTotal() {
+            quantity = parseFloat(quantityElement.value);
+            price = parseFloat(priceElement.value);
+            totalElement.value = quantity * price;
+        }
+
+        quantityElement.addEventListener("change", updateTotal);
+        priceElement.addEventListener("change", updateTotal);
+
+    });
+</script>
+
 </body>
 </html>

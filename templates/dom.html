@@ -17,6 +17,33 @@
 
   $(function() {
 
+        quantityElement = document.getElementById("number_of_nights");
+        priceElement = document.getElementById("price");
+        totalElement = document.getElementById("calculated_rate");
+        taxElement = document.getElementById("tax");
+        paymentTotalElement = document.getElementById("payment_total")
+
+        function updateTotal() {
+            quantity = parseFloat(quantityElement.value);
+            price = parseFloat(priceElement.value);
+            totalElement.value = quantity * price;
+            tax = (price * .125) * quantity;
+            cleaningFee = 50
+            paymentTotal = cleaningFee + totalElement.value + tax;
+
+            console.log("The quantity is " + quantity )
+            console.log("The price is " + price)
+            console.log("The tax is " + tax)
+            console.log("The payment total " + paymentTotal)
+            console.log("totalElement.value " + totalElement.value)
+
+        }
+
+        quantityElement.addEventListener("change", updateTotal);
+        priceElement.addEventListener("change", updateTotal);
+        taxElement.addEventListener("change", updateTotal);
+        paymentTotalElement.addEventListener("change", updateTotal);
+
 
     $( "#check_in_date, #check_out_date" ).datepicker({
          onClose:function(dateText, inst) {
@@ -197,16 +224,16 @@
     <label for="message_to_hosts">Message to Hosts</label>
     <input name="message_to_hosts">
      <br>
-    <label for="calculated_rate">Calculated Rate</label>
+    <label for="calculated_rate">Calculated Rate $</label>
      <input name="calculated_rate" disabled id="calculated_rate">
      <br>
-    <label for="cleaning_fee">Cleaning Fee</label>
-    <input name="cleaning_fee" disabled id="cleaning_fee">
+    <label for="cleaning_fee">Cleaning Fee $</label>
+    <input name="cleaning_fee" value="50" disabled id="cleaning_fee">
      <br>
-    <label for="tax">Tax</label>
+    <label for="tax">Tax $</label>
     <input name="tax" disabled id="tax">
      <br>
-    <label for="payment_total">Payment Total</label>
+    <label for="payment_total">Payment Total $</label>
     <input name="payment_total" disabled id="payment_total">
      <br>
     <input type="submit" value="submit">
@@ -222,23 +249,6 @@
     </li>
 </ul>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        quantityElement = document.getElementById("number_of_nights");
-        priceElement = document.getElementById("price");
-        totalElement = document.getElementById("calculated_rate");
-
-        function updateTotal() {
-            quantity = parseFloat(quantityElement.value);
-            price = parseFloat(priceElement.value);
-            totalElement.value = quantity * price;
-        }
-
-        quantityElement.addEventListener("change", updateTotal);
-        priceElement.addEventListener("change", updateTotal);
-
-    });
-</script>
 
 </body>
 </html>

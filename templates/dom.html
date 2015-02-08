@@ -12,9 +12,6 @@
 
   <script>
 
-
-
-
   $(function() {
 
         quantityElement = document.getElementById("number_of_nights");
@@ -26,10 +23,15 @@
         function updateTotal() {
             quantity = parseFloat(quantityElement.value);
             price = parseFloat(priceElement.value);
-            totalElement.value = quantity * price;
-            tax = (price * .125) * quantity;
-            cleaningFee = 50
-            paymentTotal = cleaningFee + totalElement.value + tax;
+            total = quantity * price;
+            totalElement.value = total;
+            taxRate = .125;
+            cleaningFee = 50;
+            total+=cleaningFee;
+            tax = total * taxRate;
+            total += tax;
+            taxElement.value = tax;
+            paymentTotalElement.value = total;
 
             console.log("The quantity is " + quantity )
             console.log("The price is " + price)

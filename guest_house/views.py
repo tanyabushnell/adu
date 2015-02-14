@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render_to_response, render, redirect
 from django.template import RequestContext
 from models import Reservation
 from json import dumps, loads
@@ -20,6 +20,9 @@ def index(request):
 
     # Render the response and send it back!
     return render_to_response('index.html', context_dict, context)
+
+def thank_you(request):
+    return render_to_response( 'thank_you.html')
 
 def dom(request):
     if request.method =="POST":
@@ -45,6 +48,7 @@ def dom(request):
         reservation.tax = float(request.POST["tax"])
         reservation.payment_total = float(request.POST["payment_total"])
         reservation.save()
+        return redirect("thank_you")
 
     return render(request, 'dom.html')
 
@@ -91,6 +95,7 @@ def add_reservation(request):
             # Now call the index() view.
             # The user will be shown the homepage.
             return index(request)
+
         else:
             # The supplied form contained errors - just print them to the terminal.
             print form.errors

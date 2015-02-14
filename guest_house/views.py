@@ -5,6 +5,7 @@ from json import dumps, loads
 from django.http import HttpResponse
 # from guest_house.forms import ReservationForm
 from datetime import date
+from dateutil import parser
 
 def index(request):
     # Obtain the context from the HTTP request.
@@ -23,6 +24,27 @@ def index(request):
 def dom(request):
     if request.method =="POST":
         print request.POST
+        reservation = Reservation()
+        reservation.contact_first_name = request.POST["contact_first_name"]
+        reservation.contact_last_name = request.POST["contact_last_name"]
+        reservation.contact_email_address = request.POST["contact_email_address"]
+        reservation.contact_phone_number = request.POST["contact_phone_number"]
+
+        reservation.check_in_date = parser.parse(request.POST["check_in_date"])
+
+        reservation.check_out_date = parser.parse(request.POST["check_out_date"])
+
+        reservation.number_of_nights  = int(request.POST["number_of_nights"])
+        reservation.number_of_adults = int(request.POST["number_of_adults"])
+        reservation.number_of_children = int(request.POST["number_of_children"])
+
+        reservation.message_to_hosts = request.POST["message_to_hosts"]
+
+        reservation.calculated_rate = float(request.POST["calculated_rate"])
+        reservation.cleaning_fee = float(request.POST["cleaning_fee"])
+        reservation.tax = float(request.POST["tax"])
+        reservation.payment_total = float(request.POST["payment_total"])
+        reservation.save()
 
     return render(request, 'dom.html')
 

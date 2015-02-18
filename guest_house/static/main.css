@@ -1,0 +1,13 @@
+*{color: saddlebrown;}
+.template {display: none;}
+fieldset {width: 80%; margin: 0 auto;background-color: #B8E2E2;}
+label, input {display: inline-block;}
+input {background-color: #FFFCDC;}
+label {width: 30%; text-align: right; color: saddlebrown}
+label + input {width: 30%;
+/*{#            margin: 0 30% 0 4%;#}*/}
+input + input {float: right;}
+.bold {font-weight: bold;}
+
+body{background-color: 	#FFFCDC;
+}

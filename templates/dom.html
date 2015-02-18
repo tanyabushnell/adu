@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="/static/main.css" type="text/css" />
+
 
     <script>
 
@@ -189,29 +190,34 @@
 
 
     </script>
-    <style>
-        .template {
-            display: none;
-        }
-    </style>
+
 </head>
 <body>
 {#<form id="f1" action="/ajax" method="post" onsubmit="return captureSubmit()">#}
+
+
 <form id="f1" method="post">
     {% csrf_token %}
     <input type="hidden" value="100" name="price" id="price">
-    <label for="contact_first_name">First Name</label>
-    <input name="contact_first_name">
+
+    <fieldset>
+        <legend class="bold">Contact Details</legend>
+        <label for="contact_first_name">First Name</label>
+        <input name="contact_first_name">
+        <br>
+        <label for="contact_last_name">Last Name</label>
+        <input name="contact_last_name">
+        <br>
+        <label for="contact_email_address">Email Address</label>
+        <input name="contact_email_address">
+        <br>
+        <label for="contact_phone_number">Phone Number</label>
+        <input name="contact_phone_number">
+    </fieldset>
+
     <br>
-    <label for="contact_last_name">Last Name</label>
-    <input name="contact_last_name">
-    <br>
-    <label for="contact_email_address">Email Address</label>
-    <input name="contact_email_address">
-    <br>
-    <label for="contact_phone_number">Phone Number</label>
-    <input name="contact_phone_number">
-    <br>
+    <fieldset>
+        <legend class="bold">Reservation Information</legend>
     <label for="check_in_date">Check In</label>
     <input name="check_in_date" id="check_in_date">
     <img src="/static/calendar.gif"/>
@@ -243,9 +249,10 @@
     <br>
     <label for="payment_total">Payment Total $</label>
     <input name="payment_total" id="payment_total">
-    <br>
-    <input type="submit" value="submit">
+    <br><br>
+    <input type="submit" value="submit" class="submit">
     <p id=“error”></p><br/>
+    </fieldset>
 </form>
 
 

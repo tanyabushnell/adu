@@ -11,6 +11,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^dom?$', 'guest_house.views.dom', name='dom'),
 
-    url(r'^thank_you$', 'guest_house.views.thank_you', name='thank_you')
+    url(r'^thank_you$', 'guest_house.views.thank_you', name='thank_you'),
+
+    url(r'^test$', 'guest_house.views.test', name='test'),
 
 )
